@@ -1,15 +1,15 @@
-import GroupModel from '../models/group.js';
+import EventModel from '../models/event.js';
 
-const Group = class Group{
+const Event = class Event{
     constructor(app, connect){
         this.app = app;
-        this.GroupModel = connect.model('Group', GroupModel);
+        this.EventModel = connect.model('Event', EventModel);
 
         this.run();
     }
 
     get(){
-        this.app.get('/group/get/:id', (req, res) => {
+        this.app.get('/event/get/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -18,8 +18,8 @@ const Group = class Group{
                     });
                     return;
                 }
-                this.GroupModel.findById(req.parmas.id).then((group) => {
-                    res.status(200).json(group || {});
+                this.EventModel.findById(req.parmas.id).then((event) => {
+                    res.status(200).json(event || {});
                 }).catch((err) => {
                     res.status(400).json({
                         status:400,
@@ -37,11 +37,11 @@ const Group = class Group{
     }
 
     create(){
-        this.app.post('/group/create', (req, res) => {
+        this.app.post('/event/create', (req, res) => {
             try{
-                const GroupModel = new this.GroupModel(req.body);
-                GroupModel.save().then((group) => {
-                    res.status(200).json(group || {});
+                const EventModel = new this.EventModel(req.body);
+                EventModel.save().then((event) => {
+                    res.status(200).json(event || {});
                 }).catch((err) => {
                     res.status(400).json({
                       status: 400,
@@ -58,7 +58,7 @@ const Group = class Group{
     }
     
     delete(){
-        this.app.delete('/group/delete/:id', (req, res) => {
+        this.app.delete('/event/delete/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -67,8 +67,8 @@ const Group = class Group{
                     });
                     return;
                 }
-                this.GroupModel.deleteOne({ "_id": req.params.id }).then((group) => {
-                    res.status(200).json(group || {});
+                this.EventModel.deleteOne({ "_id": req.params.id }).then((event) => {
+                    res.status(200).json(event || {});
                 }).catch((err) => {
                     res.status(400).json({
                         status:400,
@@ -86,7 +86,7 @@ const Group = class Group{
     }
 
     add(){
-        this.app.get('/group/add/id:', (req, res) => {
+        this.app.get('/event/add/id:', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -95,13 +95,13 @@ const Group = class Group{
                     });
                     return;
                 }
-                this.GroupModel.updateMany({ _id: req.params.id }, {
+                this.EventModel.updateMany({ _id: req.params.id }, {
                     $push: {
                       members: req.body.members
                     }
-                  }, { upsert: true }).then((group) => {
-                    res.status(200).json(group || {});
-                  }).catch((group) => {
+                  }, { upsert: true }).then((event) => {
+                    res.status(200).json(event || {});
+                  }).catch((event) => {
                     res.status(400).json({
                         status:400,
                         message: err
@@ -121,8 +121,7 @@ const Group = class Group{
         this.get();
         this.create();
         this.delete();
-        this.add();
     }
 }
 
-export default Group;
+export default Event;
