@@ -34,13 +34,13 @@ const Schema = new mongoose.Schema({
         type: String,
         require:[true, 'Group Type is required']
     },
-    basicAccess:{
+    basicAccessAll:{
         type: Boolean,
-        require: [true, 'Basic access is required']
+        require: [true, 'Give Basic Access to everyone ?']
     },
-    adminAccess:{
+    adminAccessAll:{
         type: Boolean,
-        require: [true, 'Admin access is required']
+        require: [true, 'Give Admin Access to everyone ?']
     }
 },{
     collection: 'groups',

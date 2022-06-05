@@ -1,15 +1,15 @@
-import GroupModel from '../models/group.js';
+import ThreadModel from '../models/thread.js';
 
-const Group = class Group{
+const Thread = class Thread{
     constructor(app, connect){
         this.app = app;
-        this.GroupModel = connect.model('Group', GroupModel);
+        this.ThreadModel = connect.model('Thread', ThreadModel);
 
         this.run();
     }
 
     get(){
-        this.app.get('/group/get/:id', (req, res) => {
+        this.app.get('/thread/get/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -18,8 +18,8 @@ const Group = class Group{
                     });
                     return;
                 }
-                this.GroupModel.findById(req.parmas.id).then((group) => {
-                    res.status(200).json(group || {});
+                this.ThreadModel.findById(req.parmas.id).then((thread) => {
+                    res.status(200).json(thread || {});
                 }).catch((err) => {
                     res.status(400).json({
                         status:400,
@@ -37,11 +37,11 @@ const Group = class Group{
     }
 
     create(){
-        this.app.post('/group/create', (req, res) => {
+        this.app.post('/thread/create', (req, res) => {
             try{
-                const GroupModel = new this.GroupModel(req.body);
-                GroupModel.save().then((group) => {
-                    res.status(200).json(group || {});
+                const ThreadModel = new this.ThreadModel(req.body);
+                ThreadModel.save().then((thread) => {
+                    res.status(200).json(thread || {});
                 }).catch((err) => {
                     res.status(400).json({
                       status: 400,
@@ -58,7 +58,7 @@ const Group = class Group{
     }
     
     delete(){
-        this.app.delete('/group/delete/:id', (req, res) => {
+        this.app.delete('/thread/delete/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -67,8 +67,8 @@ const Group = class Group{
                     });
                     return;
                 }
-                this.GroupModel.deleteOne({ "_id": req.params.id }).then((group) => {
-                    res.status(200).json(group || {});
+                this.ThreadModel.deleteOne({ "_id": req.params.id }).then((thread) => {
+                    res.status(200).json(thread || {});
                 }).catch((err) => {
                     res.status(400).json({
                         status:400,
@@ -86,7 +86,7 @@ const Group = class Group{
     }
 
     add(){
-        this.app.get('/group/add/id:', (req, res) => {
+        this.app.get('/thread/add/id:', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -95,12 +95,12 @@ const Group = class Group{
                     });
                     return;
                 }
-                this.GroupModel.updateMany({ _id: req.params.id }, {
+                this.ThreadModel.updateMany({ _id: req.params.id }, {
                     $push: {
                       members: req.body.members
                     }
-                  }, { upsert: true }).then((group) => {
-                    res.status(200).json(group || {});
+                  }, { upsert: true }).then((thread) => {
+                    res.status(200).json(thread || {});
                   }).catch((err) => {
                     res.status(400).json({
                         status:400,
@@ -125,4 +125,4 @@ const Group = class Group{
     }
 }
 
-export default Group;
+export default Thread;

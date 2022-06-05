@@ -101,7 +101,7 @@ const Event = class Event{
                     }
                   }, { upsert: true }).then((event) => {
                     res.status(200).json(event || {});
-                  }).catch((event) => {
+                  }).catch((err) => {
                     res.status(400).json({
                         status:400,
                         message: err
@@ -121,6 +121,7 @@ const Event = class Event{
         this.get();
         this.create();
         this.delete();
+        this.add();
     }
 }
 
