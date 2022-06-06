@@ -15,10 +15,27 @@ const Schema = new mongoose.Schema({
                 type: mongoose.ObjectId,
                 ref: 'User',
                 require: true
-              }
+            },
+            content: {
+                type: String,
+                require: true
+            },
+            reply: [
+                {
+                    replytoOP: {
+                        type: mongoose.ObjectId,
+                        ref: 'User',
+                        require: true
+                    },   
+                    content: {
+                        type: String,
+                        require: true
+                    }
+                }
+            ]
         }]
 },{
-    collection: 'groups',
+    collection: 'threads',
     minimize: true,
     versionKey: false
 }).set('toJSON', {
