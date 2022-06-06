@@ -18,7 +18,7 @@ const Thread = class Thread{
                     });
                     return;
                 }
-                this.ThreadModel.findById(req.parmas.id).then((thread) => {
+                this.ThreadModel.findById(req.params.id).then((thread) => {
                     res.status(200).json(thread || {});
                 }).catch((err) => {
                     res.status(400).json({

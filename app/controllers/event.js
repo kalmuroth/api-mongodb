@@ -18,7 +18,7 @@ const Event = class Event{
                     });
                     return;
                 }
-                this.EventModel.findById(req.parmas.id).then((event) => {
+                this.EventModel.findById(req.params.id).then((event) => {
                     res.status(200).json(event || {});
                 }).catch((err) => {
                     res.status(400).json({

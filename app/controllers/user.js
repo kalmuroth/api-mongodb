@@ -18,7 +18,7 @@ const User = class User{
                     });
                     return;
                 }
-                this.UserModel.findById(req.parmas.id).then((user) => {
+                this.UserModel.findById(req.params.id).then((user) => {
                     res.status(200).json(user || {});
                 }).catch((err) => {
                     res.status(400).json({

@@ -18,7 +18,7 @@ const Group = class Group{
                     });
                     return;
                 }
-                this.GroupModel.findById(req.parmas.id).then((group) => {
+                this.GroupModel.findById(req.params.id).then((group) => {
                     res.status(200).json(group || {});
                 }).catch((err) => {
                     res.status(400).json({
