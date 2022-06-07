@@ -4,6 +4,7 @@ import Event from './event.js';
 import Thread from './thread.js';
 import Album from './album.js';
 import Survey from './survey.js';
+import Ticket from './ticket.js';
 
 export default {
     User,
@@ -11,5 +12,6 @@ export default {
     Event,
     Thread,
     Album,
-    Survey
+    Survey,
+    Ticket
 };

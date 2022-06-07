@@ -1,15 +1,15 @@
-import AlbumModel from '../models/album.js';
+import TicketModel from '../models/ticket.js';
 
-const Album = class Album{
+const Ticket = class Ticket{
     constructor(app, connect){
         this.app = app;
-        this.AlbumModel = connect.model('Album', AlbumModel);
+        this.TicketModel = connect.model('Ticket', TicketModel);
 
         this.run();
     }
 
     get(){
-        this.app.get('/album/:id', (req, res) => {
+        this.app.get('/ticket/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -18,8 +18,8 @@ const Album = class Album{
                     });
                     return;
                 }
-                this.AlbumModel.findById(req.params.id).then((album) => {
-                    res.status(200).json(album || {});
+                this.TicketModel.findById(req.params.id).then((ticket) => {
+                    res.status(200).json(ticket || {});
                 }).catch((err) => {
                     res.status(400).json({
                         status:400,
@@ -37,11 +37,11 @@ const Album = class Album{
     }
 
     create(){
-        this.app.post('/album', (req, res) => {
+        this.app.post('/ticket', (req, res) => {
             try{
-                const AlbumModel = new this.AlbumModel(req.body);
-                AlbumModel.save().then((album) => {
-                    res.status(200).json(album || {});
+                const TicketModel = new this.TicketModel(req.body);
+                TicketModel.save().then((ticket) => {
+                    res.status(200).json(ticket || {});
                 }).catch((err) => {
                     res.status(400).json({
                       status: 400,
@@ -58,7 +58,7 @@ const Album = class Album{
     }
     
     delete(){
-        this.app.delete('/album/:id', (req, res) => {
+        this.app.delete('/ticket/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -67,8 +67,8 @@ const Album = class Album{
                     });
                     return;
                 }
-                this.AlbumModel.deleteOne({ "_id": req.params.id }).then((album) => {
-                    res.status(200).json(album || {});
+                this.TicketModel.deleteOne({ "_id": req.params.id }).then((ticket) => {
+                    res.status(200).json(ticket || {});
                 }).catch((err) => {
                     res.status(400).json({
                         status:400,
@@ -86,7 +86,7 @@ const Album = class Album{
     }
 
     update(){
-        this.app.put('/album/:id', (req, res) => {
+        this.app.put('/ticket/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -95,8 +95,8 @@ const Album = class Album{
                     });
                     return;
                 }
-                this.AlbumModel.updateOne({ "_id": req.params.id },{ $set: req.body }).then((album) => {
-                    res.status(200).json(album || {});
+                this.TicketModel.updateOne({ "_id": req.params.id },{ $set: req.body }).then((ticket) => {
+                    res.status(200).json(ticket || {});
                 }).catch((err) => {
                     res.status(400).json({
                         status:400,
@@ -121,4 +121,4 @@ const Album = class Album{
     }
 }
 
-export default Album;
+export default Ticket;

@@ -86,7 +86,7 @@ const Group = class Group{
     }
 
     add(){
-        this.app.get('/group/add/id:', (req, res) => {
+        this.app.get('/group/member/id:', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -117,11 +117,40 @@ const Group = class Group{
         });
     }
 
+    update(){
+        this.app.put('/group/:id', (req, res) => {
+            try{
+                if(!req.params.id){
+                    res.status(400).json({
+                        status: 400,
+                        message: 'Bad request : Please use a id in the query string parameters'
+                    });
+                    return;
+                }
+                this.GroupModel.updateOne({ "_id": req.params.id },{ $set: req.body }).then((group) => {
+                    res.status(200).json(group || {});
+                }).catch((err) => {
+                    res.status(400).json({
+                        status:400,
+                        message: err
+                    });
+                });    
+        
+            }catch(err){
+                res.status(400).json({
+                    status:400,
+                    message: err
+                });
+            }
+        });
+    }
+
     run(){
         this.get();
         this.create();
         this.delete();
         this.add();
+        this.update();
     }
 }
 

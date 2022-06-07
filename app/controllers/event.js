@@ -86,7 +86,7 @@ const Event = class Event{
     }
 
     add(){
-        this.app.get('/event/add/id:', (req, res) => {
+        this.app.get('/event/member/id:', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -117,11 +117,40 @@ const Event = class Event{
         });
     }
 
+    update(){
+        this.app.put('/event/:id', (req, res) => {
+            try{
+                if(!req.params.id){
+                    res.status(400).json({
+                        status: 400,
+                        message: 'Bad request : Please use a id in the query string parameters'
+                    });
+                    return;
+                }
+                this.EventModel.updateOne({ "_id": req.params.id },{ $set: req.body }).then((event) => {
+                    res.status(200).json(event || {});
+                }).catch((err) => {
+                    res.status(400).json({
+                        status:400,
+                        message: err
+                    });
+                });    
+        
+            }catch(err){
+                res.status(400).json({
+                    status:400,
+                    message: err
+                });
+            }
+        });
+    }
+
     run(){
         this.get();
         this.create();
         this.delete();
         this.add();
+        this.update();
     }
 }
 

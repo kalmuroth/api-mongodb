@@ -34,7 +34,8 @@ const baseSchema = new mongoose.Schema({
                 require: true
             },
             replys: [replySchema]
-        }]
+        }
+    ]
 },{
     collection: 'threads',
     minimize: true,

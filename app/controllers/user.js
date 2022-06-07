@@ -85,11 +85,39 @@ const User = class User{
         });
     }
 
+    update(){
+        this.app.put('/user/:id', (req, res) => {
+            try{
+                if(!req.params.id){
+                    res.status(400).json({
+                        status: 400,
+                        message: 'Bad request : Please use a id in the query string parameters'
+                    });
+                    return;
+                }
+                this.UserModel.updateOne({ "_id": req.params.id },{ $set: req.body }).then((user) => {
+                    res.status(200).json(user || {});
+                }).catch((err) => {
+                    res.status(400).json({
+                        status:400,
+                        message: err
+                    });
+                });    
+        
+            }catch(err){
+                res.status(400).json({
+                    status:400,
+                    message: err
+                });
+            }
+        });
+    }
 
     run(){
         this.get();
         this.create();
         this.delete();
+        this.update();
     }
 }
 

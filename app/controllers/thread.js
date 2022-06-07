@@ -85,8 +85,8 @@ const Thread = class Thread{
         });
     }
 
-    add(){
-        this.app.get('/thread/add/id:', (req, res) => {
+    update(){
+        this.app.put('/thread/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -95,13 +95,9 @@ const Thread = class Thread{
                     });
                     return;
                 }
-                this.ThreadModel.updateMany({ _id: req.params.id }, {
-                    $push: {
-                      members: req.body.members
-                    }
-                  }, { upsert: true }).then((thread) => {
+                this.ThreadModel.updateOne({ "_id": req.params.id },{ $set: req.body }).then((thread) => {
                     res.status(200).json(thread || {});
-                  }).catch((err) => {
+                }).catch((err) => {
                     res.status(400).json({
                         status:400,
                         message: err
@@ -121,7 +117,7 @@ const Thread = class Thread{
         this.get();
         this.create();
         this.delete();
-        this.add();
+        this.update();
     }
 }
 

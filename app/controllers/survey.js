@@ -85,8 +85,8 @@ const Survey = class Survey{
         });
     }
 
-    add(){
-        this.app.get('/survey/add/id:', (req, res) => {
+    update(){
+        this.app.put('/survey/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -95,13 +95,9 @@ const Survey = class Survey{
                     });
                     return;
                 }
-                this.SurveyModel.updateMany({ _id: req.params.id }, {
-                    $push: {
-                      members: req.body.members
-                    }
-                  }, { upsert: true }).then((survey) => {
+                this.SurveyModel.updateOne({ "_id": req.params.id },{ $set: req.body }).then((survey) => {
                     res.status(200).json(survey || {});
-                  }).catch((err) => {
+                }).catch((err) => {
                     res.status(400).json({
                         status:400,
                         message: err
@@ -121,7 +117,7 @@ const Survey = class Survey{
         this.get();
         this.create();
         this.delete();
-        this.add();
+        this.update();
     }
 }
 
