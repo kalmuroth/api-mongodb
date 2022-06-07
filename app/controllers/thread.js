@@ -9,7 +9,7 @@ const Thread = class Thread{
     }
 
     get(){
-        this.app.get('/thread/get/:id', (req, res) => {
+        this.app.get('/thread/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -37,7 +37,7 @@ const Thread = class Thread{
     }
 
     create(){
-        this.app.post('/thread/create', (req, res) => {
+        this.app.post('/thread', (req, res) => {
             try{
                 const ThreadModel = new this.ThreadModel(req.body);
                 ThreadModel.save().then((thread) => {
@@ -58,7 +58,7 @@ const Thread = class Thread{
     }
     
     delete(){
-        this.app.delete('/thread/delete/:id', (req, res) => {
+        this.app.delete('/thread/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({

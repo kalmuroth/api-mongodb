@@ -9,7 +9,7 @@ const Event = class Event{
     }
 
     get(){
-        this.app.get('/event/get/:id', (req, res) => {
+        this.app.get('/event/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -37,7 +37,7 @@ const Event = class Event{
     }
 
     create(){
-        this.app.post('/event/create', (req, res) => {
+        this.app.post('/event', (req, res) => {
             try{
                 const EventModel = new this.EventModel(req.body);
                 EventModel.save().then((event) => {
@@ -58,7 +58,7 @@ const Event = class Event{
     }
     
     delete(){
-        this.app.delete('/event/delete/:id', (req, res) => {
+        this.app.delete('/event/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({

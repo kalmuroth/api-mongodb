@@ -17,8 +17,8 @@ const Schema = new mongoose.Schema({
     password:{
         type: String,
         trim:true,
-        require:[true, 'Password name is required'],
-        minlength:[8, 'At least 8 characters']
+        require:[true, 'Password name is required (at least one letter and one number)'],
+        match:[/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/]
     },
     email:{
         type: String,

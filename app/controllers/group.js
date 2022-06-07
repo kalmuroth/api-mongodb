@@ -9,7 +9,7 @@ const Group = class Group{
     }
 
     get(){
-        this.app.get('/group/get/:id', (req, res) => {
+        this.app.get('/group/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -37,7 +37,7 @@ const Group = class Group{
     }
 
     create(){
-        this.app.post('/group/create', (req, res) => {
+        this.app.post('/group', (req, res) => {
             try{
                 const GroupModel = new this.GroupModel(req.body);
                 GroupModel.save().then((group) => {
@@ -58,7 +58,7 @@ const Group = class Group{
     }
     
     delete(){
-        this.app.delete('/group/delete/:id', (req, res) => {
+        this.app.delete('/group/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({

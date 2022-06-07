@@ -9,7 +9,7 @@ const Album = class Album{
     }
 
     get(){
-        this.app.get('/album/get/:id', (req, res) => {
+        this.app.get('/album/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -37,7 +37,7 @@ const Album = class Album{
     }
 
     create(){
-        this.app.post('/album/create', (req, res) => {
+        this.app.post('/album', (req, res) => {
             try{
                 const AlbumModel = new this.AlbumModel(req.body);
                 AlbumModel.save().then((album) => {
@@ -58,7 +58,7 @@ const Album = class Album{
     }
     
     delete(){
-        this.app.delete('/album/delete/:id', (req, res) => {
+        this.app.delete('/album/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({

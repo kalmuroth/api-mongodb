@@ -9,7 +9,7 @@ const Survey = class Survey{
     }
 
     get(){
-        this.app.get('/survey/get/:id', (req, res) => {
+        this.app.get('/survey/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -37,7 +37,7 @@ const Survey = class Survey{
     }
 
     create(){
-        this.app.post('/survey/create', (req, res) => {
+        this.app.post('/survey', (req, res) => {
             try{
                 const SurveyModel = new this.SurveyModel(req.body);
                 SurveyModel.save().then((survey) => {
@@ -58,7 +58,7 @@ const Survey = class Survey{
     }
     
     delete(){
-        this.app.delete('/survey/delete/:id', (req, res) => {
+        this.app.delete('/survey/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({

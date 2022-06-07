@@ -9,7 +9,7 @@ const User = class User{
     }
 
     get(){
-        this.app.get('/user/get/:id', (req, res) => {
+        this.app.get('/user/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
@@ -37,7 +37,7 @@ const User = class User{
     }
 
     create(){
-        this.app.post('/user/create', (req, res) => {
+        this.app.post('/user', (req, res) => {
             try{
                 const UserModel = new this.UserModel(req.body);
                 UserModel.save().then((user) => {
@@ -58,7 +58,7 @@ const User = class User{
     }
     
     delete(){
-        this.app.delete('/user/delete/:id', (req, res) => {
+        this.app.delete('/user/:id', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
