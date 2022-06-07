@@ -1,14 +1,27 @@
 import mongoose from 'mongoose';
 
-const Schema = new mongoose.Schema({
-    group_id: {
-        type: mongoose.ObjectId,
-        ref: 'Group',
-      },
-    event_id: {
-        type: mongoose.ObjectId,
-        ref: 'Event',
-      },
+const replySchema = new mongoose.Schema({
+    send_by: {
+      type: mongoose.Types.ObjectId,
+      ref: 'User',
+      required: true
+    },
+    comment: {
+      type: String,
+      required: true
+    }
+  });
+
+const baseSchema = new mongoose.Schema({
+    link: {
+        type: mongoose.Types.ObjectId,
+        required: true
+    },
+    type_link: {
+        type: String,
+        enum: ['group', 'event'],
+        required: true
+    },
     messages: [
         {
             originalPoster: {
@@ -20,19 +33,7 @@ const Schema = new mongoose.Schema({
                 type: String,
                 require: true
             },
-            reply: [
-                {
-                    whoReply: {
-                        type: mongoose.ObjectId,
-                        ref: 'User',
-                        require: true
-                    },   
-                    content: {
-                        type: String,
-                        require: true
-                    }
-                }
-            ]
+            replys: [replySchema]
         }]
 },{
     collection: 'threads',
@@ -45,4 +46,4 @@ const Schema = new mongoose.Schema({
     }
 });
 
-export default Schema;
+export default baseSchema;

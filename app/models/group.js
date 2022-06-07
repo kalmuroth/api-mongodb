@@ -3,14 +3,15 @@ import mongoose from 'mongoose';
 const Schema = new mongoose.Schema({
     members: [
         {
-          _id: {
+          id: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
             require: true
           },
           role: {
             type: String,
-            require:[true, 'Role is required']
+            require:[true, 'Role is required'],
+            enum: ['Admin', 'User']
           }
         }
     ],

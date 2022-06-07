@@ -47,7 +47,7 @@ const Schema = new mongoose.Schema({
             ],
         }]
 },{
-    collection: 'threads',
+    collection: 'surveys',
     minimize: true,
     versionKey: false
 }).set('toJSON', {

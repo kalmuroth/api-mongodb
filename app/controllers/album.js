@@ -86,7 +86,7 @@ const Album = class Album{
     }
 
     add(){
-        this.app.get('/album/add/id:', (req, res) => {
+        this.app.get('/album/add"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$""^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"/id:', (req, res) => {
             try{
                 if(!req.params.id){
                     res.status(400).json({
