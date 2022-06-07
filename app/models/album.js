@@ -1,22 +1,18 @@
 import mongoose from 'mongoose';
 
 const Schema = new mongoose.Schema({
-    group_id: {
-        type: mongoose.ObjectId,
-        ref: 'Group',
-      },
     event_id: {
         type: mongoose.ObjectId,
         ref: 'Event',
       },
-    messages: [
+    album: [
         {
             originalPoster: {
                 type: mongoose.ObjectId,
                 ref: 'User',
                 require: true
             },
-            content: {
+            image: {
                 type: String,
                 require: true
             },
@@ -35,7 +31,7 @@ const Schema = new mongoose.Schema({
             ]
         }]
 },{
-    collection: 'threads',
+    collection: 'albums',
     minimize: true,
     versionKey: false
 }).set('toJSON', {

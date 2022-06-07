@@ -38,7 +38,7 @@ const Schema = new mongoose.Schema({
         type: String,
         require:[true, 'Font Image is required']
     },
-    privateAcces:{
+    privateAccess:{
         type: Boolean,
         require: [true, 'Event must be private ?']
     }
