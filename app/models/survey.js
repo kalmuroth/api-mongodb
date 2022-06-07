@@ -1,51 +1,48 @@
 import mongoose from 'mongoose';
 
-const Schema = new mongoose.Schema({
-    event_id: {
-        type: mongoose.ObjectId,
-        ref: 'Event',
+const questionSchema = new mongoose.Schema({
+    subject: {
+        type: String,
+        require: true
     },
-    survey: [
+    responses: [
         {
-            subject: {
+            option: {
                 type: String,
                 require: true
             },
+        }
+    ]
+});
+
+const baseSchema = new mongoose.Schema({
+    event: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Event',
+        required: true
+    },
+    survey: [
+        {
             surveyPoster: {
                 type: mongoose.ObjectId,
                 ref: 'User',
                 require: true
             },
-            questions: [
-                {
-                    subject: {
-                        type: String,
-                        require: true
-                    },
-                    responses: [
-                        {
-                            option: {
-                                type: String,
-                                require: true
-                            },
-                        }
-                    ],
-                    reply: [
-                        {
-                            whoReply: {
-                                type: mongoose.ObjectId,
-                                ref: 'User',
-                                require: true
-                            },   
-                            content: {
-                                type: String,
-                                require: true
-                            }
-                        }
-                    ]
+            questions: [questionSchema],
+        }],
+        reply: [
+            {
+                whoReply: {
+                    type: mongoose.ObjectId,
+                    ref: 'User',
+                    require: true
+                },   
+                content: {
+                    type: String,
+                    require: true
                 }
-            ],
-        }]
+            }
+        ]
 },{
     collection: 'surveys',
     minimize: true,
@@ -57,4 +54,4 @@ const Schema = new mongoose.Schema({
     }
 });
 
-export default Schema;
+export default baseSchema;

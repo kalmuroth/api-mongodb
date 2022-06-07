@@ -10,7 +10,7 @@ const replySchema = new mongoose.Schema({
       type: String,
       required: true
     }
-  });
+});
 
 const baseSchema = new mongoose.Schema({
     link: {
