@@ -31,7 +31,7 @@ Response exemples
     "members": [
         {
             "id": "74894a3464a84a984a9b2a2",
-            "role": Admin
+            "role": "Admin"
         }
     ]
     "name": "Group1",
@@ -55,7 +55,7 @@ Body exemples
     "members": [
         {
             "id": "74894a3464a84a984a9b2a2",
-            "role": Admin
+            "role": "Admin"
         }
     ]
     "name": "Group1",
@@ -91,7 +91,7 @@ Body exemples
     "members": [
         {
             "id": "74894a3464a84a984a9b2a2",
-            "role": User
+            "role": "User"
         }
     ]
     "name": "Group1",
