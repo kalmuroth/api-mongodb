@@ -29,20 +29,20 @@ const baseSchema = new mongoose.Schema({
                 require: true
             },
             questions: [questionSchema],
-        }],
-        reply: [
-            {
-                whoReply: {
-                    type: mongoose.ObjectId,
-                    ref: 'User',
-                    require: true
-                },   
-                content: {
-                    type: String,
-                    require: true
+            reply: [
+                {
+                    whoReply: {
+                        type: mongoose.ObjectId,
+                        ref: 'User',
+                        require: true
+                    },   
+                    content: {
+                        type: String,
+                        require: true
+                    }
                 }
-            }
-        ]
+            ]
+        }],
 },{
     collection: 'surveys',
     minimize: true,

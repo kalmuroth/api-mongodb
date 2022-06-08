@@ -59,6 +59,7 @@ class Server {
     new routes.Thread(this.app, this.connect);
     new routes.Album(this.app, this.connect);
     new routes.Survey(this.app, this.connect);
+    new routes.Ticket(this.app, this.connect);
     this.app.use((req, res) => {
       res.status(404).json({
         code: 404,

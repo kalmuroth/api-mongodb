@@ -27,35 +27,42 @@ http://[hostingURL]/survey/:id
 Response exemples
 ```json
 {
-    "id": "49a849a84a89a9aa48a9a4a89"
-    "event": "629a26143576a45b23564c6"
+    "_id": "62a09b3cd4911cc67bd972dd",
+    "event": "62a0944c0a25f550eb505b79",
     "survey": [
         {
-            "surveyPoster": "Lucas",
+            "surveyPoster": "62a090b50a25f550eb505b60",
             "questions": [
                 {
                     "subject": "Two plus two equal ?",
                     "responses": [
                         {
                             "option": "3",
+                            "_id": "62a09b3cd4911cc67bd972e0"
                         },
                         {
                             "option": "4",
+                            "_id": "62a09b3cd4911cc67bd972e1"
                         },
                         {
                             "option": "5",
+                            "_id": "62a09b3cd4911cc67bd972e2"
                         }
-                    ]
+                    ],
+                    "_id": "62a09b3cd4911cc67bd972df"
                 }
             ],
             "reply": [
                 {
-                    "whoReply": "Pierre",
+                    "whoReply": "62a090b50a25f550eb505b60",
                     "content": "Why ????",
-                },
-            ]
+                    "_id": "62a09b3cd4911cc67bd972e3"
+                }
+            ],
+            "_id": "62a09b3cd4911cc67bd972de"
         }
-    ]
+    ],
+    "id": "62a09b3cd4911cc67bd972dd"
 }
 ```
 
@@ -67,31 +74,31 @@ http://[hostingURL]/survey
 Body exemples
 ```json
 {
-    "event": "629a26143576a45b23564c6"
+    "event": "62a0944c0a25f550eb505b79",
     "survey": [
         {
-            "surveyPoster": "Lucas",
+            "surveyPoster": "62a090b50a25f550eb505b60",
             "questions": [
                 {
                     "subject": "Two plus two equal ?",
                     "responses": [
                         {
-                            "option": "3",
+                            "option": "3"
                         },
                         {
-                            "option": "4",
+                            "option": "4"
                         },
                         {
-                            "option": "5",
+                            "option": "5"
                         }
                     ]
                 }
             ],
             "reply": [
                 {
-                    "whoReply": "Pierre",
-                    "content": "Why ????",
-                },
+                    "whoReply": "62a090b50a25f550eb505b60",
+                    "content": "Why ????"
+                }
             ]
         }
     ]
@@ -118,31 +125,31 @@ http://[hostingURL]/survey/:id
 Body exemples
 ```json
 {
-    "event": "629a26143576a45b23564c6"
+    "event": "62a0944c0a25f550eb505b79",
     "survey": [
         {
-            "surveyPoster": "Lucas",
+            "surveyPoster": "62a090b50a25f550eb505b60",
             "questions": [
                 {
-                    "subject": "Two plus three equal ?",
+                    "subject": "Two plus two equal ?",
                     "responses": [
                         {
-                            "option": "3",
+                            "option": "3"
                         },
                         {
-                            "option": "4",
+                            "option": "4"
                         },
                         {
-                            "option": "5",
+                            "option": "5"
                         }
                     ]
                 }
             ],
             "reply": [
                 {
-                    "whoReply": "Pierre",
-                    "content": "Why ????",
-                },
+                    "whoReply": "62a090b50a25f550eb505b60",
+                    "content": "Why ????"
+                }
             ]
         }
     ]

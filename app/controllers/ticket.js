@@ -113,11 +113,43 @@ const Ticket = class Ticket{
         });
     }
 
+    add() {
+        this.app.post('/ticket/:id', (req, res) => {
+            try {
+                if (!req.params.id) {
+                    res.status(400).json({
+                    status: 400,
+                    message: 'bad request: Please use a id in the query string parameters'
+                });
+                return;
+            }
+            this.TicketModel.updateMany({ _id: req.params.id }, {
+                $push: {
+                    purchases: req.body.purchases
+                }
+            }, { upsert: true }).then((ticket) => {
+                res.status(200).json(ticket || {});
+            }).catch((err) => {
+                res.status(400).json({
+                    status: 400,
+                    message: err
+                });
+            });
+            } catch (err) {
+                res.status(400).json({
+                    status: 400,
+                    message: err
+                })
+            }
+        })
+    }
+
     run(){
         this.get();
         this.create();
         this.delete();
         this.update();
+        this.add();
     }
 }
 

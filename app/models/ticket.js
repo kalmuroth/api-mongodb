@@ -1,14 +1,11 @@
 import mongoose from 'mongoose';
 
 const purchaseSchema = new mongoose.Schema({
-    ticket: {
-        type: mongoose.ObjectId
+    ticket_id: {
+        type: mongoose.Type.ObjectId
     },
-    contact: [{
-        type: {
-            type: mongoose.Types.ObjectId,
-            required: true
-        },
+    contact: [
+      {
         firstname: {
             type: String,
             require: true
@@ -25,7 +22,8 @@ const purchaseSchema = new mongoose.Schema({
             type: Date,
             default: Date.now
         }
-    }],
+      }
+    ],
 });
 
 const baseSchema = new mongoose.Schema({
