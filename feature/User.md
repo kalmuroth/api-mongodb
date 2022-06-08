@@ -27,7 +27,7 @@ Response exemples
     "lastname": "Bordner",
     "age": 21,
     "password": "Password1234",
-    "email": "lucas.bordner@gmail.com"
+    "email": "lucas.lastname@gmail.com"
 }
 ```
 
@@ -40,10 +40,10 @@ Body exemples
 ```json
 {
     "firstname": "Lucas",
-    "lastname": "Bordner",
+    "lastname": "Lastname",
     "age": 21,
     "password": "Password1234",
-    "email": "lucas.bordner@gmail.com"
+    "email": "lucas.lastname@gmail.com"
 }
 ```
 
@@ -68,9 +68,9 @@ Body exemples
 ```json
 {
     "firstname": "LucasUpdate",
-    "lastname": "BordnerUpdate",
+    "lastname": "LastnameUpdate",
     "age": 21,
     "password": "Password1234",
-    "email": "lucas.bordner@gmail.com"
+    "email": "lucas.lastname@gmail.com"
 }
 ```

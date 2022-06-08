@@ -1,38 +1,35 @@
 import mongoose from 'mongoose';
 
 const purchaseSchema = new mongoose.Schema({
-    ticket_id: {
+    ticket: {
         type: mongoose.ObjectId
     },
     contact: [{
-        exterior: {
-            type: {
-                type: mongoose.Types.ObjectId,
-                enum: ['Type A', 'Type B'],
-                required: true
-            },
-            firstname: {
-                type: String,
-                require: true
-            },
-            lastname: {
-                type: String,
-                require: true
-            },
-            address: {
-                type: String,
-                require: true
-            },
-            date: {
-                type: Date,
-                default: Date.now
-            }
+        type: {
+            type: mongoose.Types.ObjectId,
+            required: true
+        },
+        firstname: {
+            type: String,
+            require: true
+        },
+        lastname: {
+            type: String,
+            require: true
+        },
+        address: {
+            type: String,
+            require: true
+        },
+        date: {
+            type: Date,
+            default: Date.now
         }
     }],
 });
 
 const baseSchema = new mongoose.Schema({
-  event_id: {
+  event: {
     type: mongoose.Types.ObjectId,
     ref: 'Event',
     required: true
