@@ -27,20 +27,19 @@ http://[hostingURL]/group/:id
 Response exemples
 ```json
 {
-    "id": "629a26143576a45b23564c6"
+    "_id": "62a093640a25f550eb505b70",
     "members": [
         {
-            "id": "74894a3464a84a984a9b2a2",
-            "role": "Admin"
+            "role": "Admin",
+            "_id": "629b760ab444d7d81caeac54"
         }
-    ]
-    "name": "Group1",
-    "description": "Group 1 description",
-    "icon": "icon.png",
-    "fontImage": "picture.jpeg",
+    ],
+    "name": "Lucas2",
+    "description": "Bordner",
+    "icon": "21",
+    "fontImage": "test1234",
     "type": "public",
-    "basicAccessAll":true,
-    "adminAccessAll":false
+    "id": "62a093640a25f550eb505b70"
 }
 ```
 
@@ -62,9 +61,7 @@ Body exemples
     "description": "Group 1 description",
     "icon": "icon.png",
     "fontImage": "picture.jpeg",
-    "type": "public",
-    "basicAccessAll":true,
-    "adminAccessAll":false
+    "type": "public"
 }
 ```
 

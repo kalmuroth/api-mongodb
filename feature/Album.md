@@ -24,8 +24,8 @@ http://[hostingURL]/album/:id
 Response exemples
 ```json
 {
-    "id": "a4884c5qs64cq654csq564csq54",
-    "event": "629a26143576a45b23564c6",
+    "_id": "62a097050a25f550eb505b8f",
+    "event": "62a0944c0a25f550eb505b79",
     "album": [
         {
             "originalPoster": "62a090b50a25f550eb505b60",
@@ -33,11 +33,14 @@ Response exemples
             "reply": [
                 {
                     "whoReply": "62a090b50a25f550eb505b60",
-                    "content": "Ok"
+                    "content": "Ok nice",
+                    "_id": "62a09b9fd4911cc67bd972e7"
                 }
-            ]
+            ],
+            "_id": "62a09b9fd4911cc67bd972e6"
         }
-    ]
+    ],
+    "id": "62a097050a25f550eb505b8f"
 }
 ```
 

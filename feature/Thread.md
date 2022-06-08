@@ -25,21 +25,24 @@ http://[hostingURL]/thread/:id
 Response exemples
 ```json
 {
-    "id": "49a849a84a89a9aa48a9a4a89",
-    "link": "629a26143576a45b23564c6",
+    "_id": "62a095430a25f550eb505b84",
+    "link": "62a0944c0a25f550eb505b79",
     "type_link": "Event",
     "messages": [
         {
-            "originalPoster": "74894a3464a84a984a9b2a2",
+            "originalPoster": "62a090b50a25f550eb505b60",
             "content": "Hello !",
             "replys": [
                 {
-                    "send_by": "98794a3464a84a8542a3b3a4",
-                    "comment": "hi"
+                    "send_by": "62a090b50a25f550eb505b60",
+                    "comment": "hey",
+                    "_id": "62a095b00a25f550eb505b8a"
                 }
-            ]
+            ],
+            "_id": "62a095b00a25f550eb505b89"
         }
-    ]
+    ],
+    "id": "62a095430a25f550eb505b84"
 }
 ```
 
