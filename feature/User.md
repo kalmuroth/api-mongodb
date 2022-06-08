@@ -22,7 +22,7 @@ http://[hostingURL]/user/:id
 Response exemples
 ```json
 {
-    "id": "629a261696587a45b59128c6"
+    "id": "74894a3464a84a984a9b2a2"
     "firstname": "Lucas",
     "lastname": "Bordner",
     "age": 21,
@@ -55,7 +55,7 @@ http://[hostingURL]/user/:id
 Body exemples
 ```json
 {
-    "id": "629a261696587a45b59128c6"
+    "id": "74894a3464a84a984a9b2a2"
 }
 ```
 
