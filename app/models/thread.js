@@ -19,7 +19,7 @@ const baseSchema = new mongoose.Schema({
     },
     type_link: {
         type: String,
-        enum: ['group', 'event'],
+        enum: ['Group', 'Event'],
         required: true
     },
     messages: [
